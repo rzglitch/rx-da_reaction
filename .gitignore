@@ -1,0 +1,7 @@
+vendor/**/bin
+vendor/**/tests?
+vendor/phpstan
+docs/.vitepress/cache
+public/emoticon-images/*
+config.php
+phpstan.neon

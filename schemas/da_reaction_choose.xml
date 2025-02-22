@@ -1,0 +1,8 @@
+<table name="da_reaction_choose">
+    <column name="id" type="bigint" notnull="notnull" primary_key="primary_key" auto_increment="auto_increment" />
+    <column name="member_srl" type="number" notnull="notnull" index="i_parent_id" unique="u_reaction" />
+    <column name="parent_id" type="varchar" size="250" charset="latin1" index="i_parent_id" />
+    <column name="target_id" type="varchar" size="250" charset="latin1" unique="u_reaction" notnull="notnull" />
+    <column name="reaction" type="varchar" size="250" charset="latin1" unique="u_reaction" notnull="notnull" />
+    <column name="regdate" type="date" />
+</table>

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module version="0.2">
+    <!-- 표시될 모듈 이름 -->
+    <title xml:lang="ko">Reaction</title>
+    <!-- 표시될 모듈 설명 -->
+    <description xml:lang="ko">글, 댓글에 반응 남기기</description>
+    <!-- 모듈 버전 -->
+    <version>1.0.0</version>
+    <!-- 모듈 배포 날짜 -->
+    <date>2025-03-12</date>
+
+    <!-- 제작자 정보 -->
+    <author email_address="kkigomi@gmail.com" link="https://github.com/kkigomi">
+        <name xml:lang="ko">Kkigomi</name>
+    </author>
+    <author link="https://github.com/damoang-users">
+        <name xml:lang="ko">Damoang Users</name>
+    </author>
+</module>

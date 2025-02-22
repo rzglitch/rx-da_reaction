@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<module>
+    <!--
+    모듈의 기본 클래스를 지정합니다.
+    여기에 지정된 클래스(`name` 속성)는 `\ModuleObject` 클래스를 상속해야 합니다.
+    -->
+    <classes>
+        <class type="default" name="Src\ModuleBase" />
+        <class type="install" name="Src\ModuleBase" />
+    </classes>
+
+    <actions>
+        <action name="procDa_reactionReact"
+            class="Src\Controllers\RequestHandler" />
+    </actions>
+
+    <!-- 이벤트 핸들러 등록 -->
+    <eventHandlers>
+        <eventHandler after="moduleHandler.proc"
+            class="Src\EventHandler"
+            method="ListenerModuleHandlerProcAfter" />
+    </eventHandlers>
+
+    <!-- 관리페이지용 메뉴 -->
+    <menus>
+    </menus>
+</module>

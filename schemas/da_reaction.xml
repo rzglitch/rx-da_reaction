@@ -1,0 +1,8 @@
+<table name="da_reaction">
+    <column name="id" type="bigint" notnull="notnull" primary_key="primary_key" auto_increment="auto_increment" />
+    <column name="parent_id" type="varchar" size="250" charset="latin1" index="i_parent_id" />
+    <column name="target_id" type="varchar" size="250" charset="latin1" notnull="notnull" unique="u_reaction" />
+    <column name="reaction" type="varchar" size="250" charset="latin1" notnull="notnull" unique="u_reaction" />
+    <column name="reaction_count" type="number" notnull="notnull" default="0" />
+    <column name="metadata" type="json" />
+</table>

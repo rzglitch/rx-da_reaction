@@ -127,7 +127,6 @@ class ReactionModel extends ModuleBase
         }
 
         foreach ($result as $row) {
-            dump($row);
             $reactionData = ReactionHelper::parseReaction($row->reaction, intval($row->reaction_count ?? 0));
             if ($memberSrl && $memberActions) {
                 $reactionData['choose'] = in_array($reactionData['reaction'], $memberActions);

@@ -407,6 +407,7 @@ class DaReaction {
       reactionMode,
       targetId,
       parentId,
+      _rx_csrf_token: document.querySelector('meta[name="csrf-token"]').content,
     };
 
     if (reactionMode === 'add' && !this.store.isAdmin) {

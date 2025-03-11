@@ -1,0 +1,31 @@
+{
+  "$schema": "https://unpkg.com/release-it/schema/release-it.json",
+  "plugins": {
+    "@j-ulrich/release-it-regex-bumper": {
+      "in": {
+        "file": "conf/info.xml",
+        "path": "module > version"
+      },
+      "out": [
+        {
+          "file": "conf/info.xml",
+          "path": "module > version"
+        },
+        {
+          "file": "conf/info.xml",
+          "search": "\\<date\\>[^<]*?\\<\\/date\\>",
+          "replace": "<date>{{now:yyyy-MM-dd}}</date>"
+        }
+      ]
+    },
+    "@release-it/conventional-changelog": {
+      "infile": "CHANGELOG.md",
+      "preset": {
+        "name": "conventionalcommits"
+      }
+    }
+  },
+  "hooks": {
+    "after:release": "git archive --format=zip main -o rx-da_reaction-v${version}.zip"
+  }
+}

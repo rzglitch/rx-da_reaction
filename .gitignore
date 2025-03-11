@@ -1,7 +1,8 @@
+*.zip
+config.php
+docs/.vitepress/cache
+phpstan.neon
+public/emoticon-images/*
 vendor/**/bin
 vendor/**/tests?
 vendor/phpstan
-docs/.vitepress/cache
-public/emoticon-images/*
-config.php
-phpstan.neon

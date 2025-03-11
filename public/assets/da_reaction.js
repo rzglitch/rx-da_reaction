@@ -290,8 +290,8 @@ document.addEventListener('alpine:init', function () {
         this.$refs.daReactionPopover.setAttribute('role', 'dialog');
 
         this.$nextTick(() => {
-          this.$refs.daReactionPopover.focus();
           this.position();
+          this.$refs.daReactionPopover.focus();
         });
       });
     },

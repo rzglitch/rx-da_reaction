@@ -4,5 +4,4 @@
     <column name="target_id" type="varchar" size="250" charset="latin1" notnull="notnull" unique="u_reaction" />
     <column name="reaction" type="varchar" size="250" charset="latin1" notnull="notnull" unique="u_reaction" />
     <column name="reaction_count" type="number" notnull="notnull" default="0" />
-    <column name="metadata" type="json" />
 </table>

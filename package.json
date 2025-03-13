@@ -1,14 +1,13 @@
 {
   "private": true,
   "name": "da_reaction",
-  "version": "1.0.3",
   "type": "module",
   "scripts": {
     "docs:dev": "vitepress dev docs",
     "docs:build": "vitepress build docs",
     "docs:preview": "vitepress preview docs",
     "archive": "git archive --format=zip main -o rx-da_reaction.zip",
-    "release": "release-it"
+    "release": "release-it --no-npm"
   },
   "devDependencies": {
     "@j-ulrich/release-it-regex-bumper": "^5.2.0",

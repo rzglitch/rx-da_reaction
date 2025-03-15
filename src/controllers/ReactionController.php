@@ -44,7 +44,11 @@ class ReactionController extends ModuleBase
         // 리액션 제한 확인
         $reactable = ReactionModel::reactable($config, $member, $targetId, $reaction);
 
-        if ($reactionMode === 'toggle' && $reactable ^ ModuleBase::REACTABLE_ADD) {
+        if (
+            $reactionMode === 'toggle'
+            && $reactable ^ ModuleBase::REACTABLE_ADD
+            && $reactable & ModuleBase::REACTABLE_REVOKE
+        ) {
             return ReactionModel::revokeReaction($member->member_srl, $reaction, $targetId);
 
         } else if ($reactable & ModuleBase::REACTABLE_ADD) {

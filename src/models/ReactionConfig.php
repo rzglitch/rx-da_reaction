@@ -90,7 +90,7 @@ class ReactionConfig
             throw new MustLogin();
         }
 
-        if ($this->getAllowGroups()) {
+        if (count($this->getAllowGroups())) {
             $groups = array_keys($member->getGroups());
             if (!count(array_intersect($groups, $this->getAllowGroups()))) {
                 throw new NotPermitted();
@@ -103,8 +103,12 @@ class ReactionConfig
     /**
      * @return int[]
      */
-    public function getAllowGroups(): array
+    public function getAllowGroups(): ?array
     {
+        if (!$this->config->reaction_allows) {
+            return null;
+        }
+
         $groups = explode(',', $this->config->reaction_allows);
         $groups = array_map('intval', $groups);
 

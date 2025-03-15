@@ -35,12 +35,6 @@ class ReactionController extends ModuleBase
 
         $targetInfo = ReactionHelper::parseTargetId($targetId);
 
-        try {
-            $config->reactable($member);
-        } catch (Exception $e) {
-            throw new Exception("리액션 할 수 없습니다. ({$e->getmessage()})", 0, $e);
-        }
-
         // 리액션 제한 확인
         $reactable = ReactionModel::reactable($config, $member, $targetId, $reaction);
 
@@ -52,6 +46,14 @@ class ReactionController extends ModuleBase
             return ReactionModel::revokeReaction($member->member_srl, $reaction, $targetId);
 
         } else if ($reactable & ModuleBase::REACTABLE_ADD) {
+            try {
+                if (!$member->isAdmin()) {
+                    $config->reactable($member);
+                }
+            } catch (Exception $e) {
+                throw new Exception("리액션 할 수 없습니다. ({$e->getmessage()})", 0, $e);
+            }
+
             if (!$member->isAdmin() && !$config->reaction_self) {
                 if ($targetInfo['type'] === 'document') {
                     $documentItem = DocumentModel::getDocument($targetInfo['document_srl']);

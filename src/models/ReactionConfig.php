@@ -90,6 +90,10 @@ class ReactionConfig
             throw new MustLogin();
         }
 
+        if ($member->isAdmin()) {
+            return true;
+        }
+
         if (count($this->getAllowGroups())) {
             $groups = array_keys($member->getGroups());
             if (!count(array_intersect($groups, $this->getAllowGroups()))) {

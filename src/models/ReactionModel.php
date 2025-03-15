@@ -229,17 +229,12 @@ class ReactionModel extends ModuleBase
             throw new Exception($message, 0, $e);
         }
 
-        // 관리자는 항상 허용
-        if ($member->isAdmin()) {
-            $reactable |= ModuleBase::REACTABLE_ADD;
-        }
-
         // 리액션 이력이 있으면 취소 허용
         if ($choose) {
             $reactable |= ModuleBase::REACTABLE_REVOKE;
-        }
-
-        if ($reactionRows < $reactionLimit) {
+        } else if ($reactionRows < $reactionLimit) {
+            $reactable |= ModuleBase::REACTABLE_ADD;
+        } else if ($member->isAdmin()) {
             $reactable |= ModuleBase::REACTABLE_ADD;
         }
 

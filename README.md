@@ -1,8 +1,12 @@
 # DA Reaction - 반응 남기기 라이믹스 모듈
 
+![GitHub Release](https://img.shields.io/github/v/release/damoang-users/rx-da_reaction?sort=semver&display_name=release&label=semver)
+![GitHub License](https://img.shields.io/github/license/damoang-users/rx-da_reaction)
+[![Conventional Commits](https://img.shields.io/badge/Conventional%20Commits-%23FE5196?logo=conventionalcommits&logoColor=white)](https://conventionalcommits.org)
+
 이 라이믹스 모듈은 이모지와 이모티콘으로 글, 댓글에 다양한 반응을 남길 수 있는 기능을 제공합니다.
 
-> [!NOTE] 안내
+> [!NOTE]
 > 이 기능은 아직 개발 초기이며, 상세 설정, 기능 사용법에 대한 자세한 안내, 활용법 가이드 및 연동 등의 지원을 계획하고 있으나 일정을 명시할 수 없습니다.
 >
 > 이 기능과의 연동 및 상세한 사용법 등의 대한 문의, 제안 및 기여 등은 [저장소](https://github.com/damoang-users/rx-da_reaction)에 이슈를 남겨주시기 바랍니다.

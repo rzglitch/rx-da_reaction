@@ -27,10 +27,6 @@ Free Software Foundation이 공표한 GNU General Public License v2 또는 그 �
 이 프로그램의 사용으로인해 발생하는 모든 문제 및 피해 등에 대한 묵시적 보증 및 책임 역시 제공하지 않습니다.
 자세한 내용은 [GNU General Public License](./LICENSE)를 참고하시기 바랍니다.
 
-### 저작물 권리행사에 대한 위임
-
-다모앙(damoang.net)의 운영주체인 SDK Co., Ltd. 에 이 저작물에 대한 권리를 위임합니다.
-
 ## 사용된 오픈소스
 
 이 프로그램 및 문서를 위해 사용된 오픈소스 목록입니다.

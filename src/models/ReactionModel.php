@@ -10,6 +10,7 @@ use Rhymix\Framework\Exception;
 use Rhymix\Framework\Exceptions\MustLogin;
 use Rhymix\Framework\Helpers\SessionHelper;
 use Rhymix\Modules\Da_reaction\Src\Exceptions\CannotReactToOwnTargetException;
+use Rhymix\Modules\Da_reaction\Src\Exceptions\ReactionLimitExceededException;
 use Rhymix\Modules\Da_reaction\Src\ModuleBase;
 use Rhymix\Modules\Da_reaction\Src\ReactionHelper;
 
@@ -190,6 +191,7 @@ class ReactionModel extends ModuleBase
      * - 추가 및 취소 가능: 3 (ModuleBase::REACTABLE)
      *
      * @throws CannotReactToOwnTargetException
+     * @throws ReactionLimitExceededException
      */
     public static function reactable(ReactionConfig $config, SessionHelper $member, string $targetId, string $reaction): int
     {
@@ -239,8 +241,12 @@ class ReactionModel extends ModuleBase
 
         if ($reactionRows < $reactionLimit) {
             $reactable |= ModuleBase::REACTABLE_ADD;
-        } else if (!$choose) {
-            $reactable |= ModuleBase::REACTABLE_ADD;
+        }
+
+        if ($reactable === ModuleBase::NOT_REACTABLE) {
+            if ($reactionRows >= $reactionLimit) {
+                throw new ReactionLimitExceededException($reactionLimit);
+            }
         }
 
         return $reactable;

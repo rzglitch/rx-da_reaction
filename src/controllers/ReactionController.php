@@ -9,6 +9,7 @@ use Rhymix\Framework\Exception;
 use Rhymix\Framework\Exceptions\MustLogin;
 use Rhymix\Framework\Helpers\SessionHelper;
 use Rhymix\Modules\Da_reaction\Src\Exceptions\CannotReactToOwnTargetException;
+use Rhymix\Modules\Da_reaction\Src\Exceptions\ReactionLimitExceededException;
 use Rhymix\Modules\Da_reaction\Src\Models\ReactionConfig;
 use Rhymix\Modules\Da_reaction\Src\Models\ReactionModel;
 use Rhymix\Modules\Da_reaction\Src\ModuleBase;
@@ -20,6 +21,7 @@ class ReactionController extends ModuleBase
      * 리액션 추가 및 취소
      *
      * @throws MustLogin
+     * @throws ReactionLimitExceededException
      */
     public static function react(ReactionConfig $config, SessionHelper $member, string $reactionMode, string $reaction, string $targetId, string $parentId): bool
     {
@@ -37,6 +39,10 @@ class ReactionController extends ModuleBase
 
         // 리액션 제한 확인
         $reactable = ReactionModel::reactable($config, $member, $targetId, $reaction);
+
+        if ($reactable === ModuleBase::NOT_REACTABLE) {
+            throw new Exception('리액션을 추가할 수 없습니다.');
+        }
 
         if (
             $reactionMode === 'toggle'

@@ -6,6 +6,7 @@ namespace Rhymix\Modules\Da_reaction\Src\Controllers;
 use Context;
 use Rhymix\Framework\Exception;
 use Rhymix\Framework\Session;
+use Rhymix\Modules\Da_reaction\Src\Exceptions\ReactionLimitExceededException;
 use Rhymix\Modules\Da_reaction\Src\Models\ReactionModel;
 use Rhymix\Modules\Da_reaction\Src\ModuleBase;
 use Rhymix\Modules\Da_reaction\Src\ReactionHelper;
@@ -28,12 +29,21 @@ class RequestHandler extends ModuleBase
         $targetInfo = ReactionHelper::parseTargetId($targetId);
         $moduleSrl = $targetInfo['module_srl'];
 
+
         $member = Session::getMemberInfo();
         $config = $moduleSrl ? static::getPartConfig($moduleSrl) : static::getConfig();
+        dp($moduleSrl, $config->reaction_limit);
 
         try {
             ReactionController::react($config, $member, $reactionMode, $reaction, $targetId, $parentId);
+        } catch (ReactionLimitExceededException $e) {
+            $this->add('reactionLimit', $e->getLimit());
+            $this->add('exception', get_class($e));
+            $this->setError(-1);
+            $this->setMessage($e->getMessage(), 'error');
+            return;
         } catch (Exception $e) {
+            $this->add('exception', get_class($e));
             $this->setError(-1);
             $this->setMessage($e->getMessage(), 'error');
             return;
